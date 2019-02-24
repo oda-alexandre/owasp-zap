@@ -19,12 +19,12 @@
 
 ## INTRODUCTION
 
-Ce repository contient le fichier Dockerfile de [owasp-zap](https://www.owasp.org/index.php/OWASP_HA_Vulnerability_Scanner_Project) pour [Docker](https://www.docker.com), mis à jour automatiquement dans le [Docker Hub](https://hub.docker.com/r/alexandreoda/owasp-zap/) public.
+Ce repository contient le fichier Dockerfile de [owasp-zap](https://www.owasp.org/index.php/OWASP_HA_Vulnerability_Scanner_Project) pour [docker](https://www.docker.com), mis à jour automatiquement dans le [docker hub](https://hub.docker.com/r/alexandreoda/owasp-zap/) public.
 
 
 ## PREREQUIS
 
-Installer [Docker](https://www.docker.com)
+Installer [docker](https://www.docker.com)
 
 
 ## INSTALLATION
