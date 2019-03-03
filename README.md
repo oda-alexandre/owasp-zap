@@ -1,25 +1,32 @@
 # OWASP-ZAP
 
-![owasp-zap](https://raw.githubusercontent.com/oda-alexandre/owasp-zap/master/img/logo-owasp-zap.png) ![docker](https://raw.githubusercontent.com/oda-alexandre/owasp-zap/master/img/logo-docker.png)
+[![dockeri.co](https://dockeri.co/image/alexandreoda/owasp-zap)](https://hub.docker.com/r/alexandreoda/owasp-zap)
 
 
 ## INDEX
 
-- [Build Docker](#BUILD)
+- [Badges](#BADGES)
 - [Introduction](#INTRODUCTION)
 - [Prerequis](#PREREQUIS)
 - [Installation](#INSTALLATION)
 - [License](#LICENSE)
 
 
-## BUILD DOCKER
+## BADGES
 
-[![owasp-zap docker build](https://img.shields.io/docker/build/alexandreoda/owasp-zap.svg)](https://hub.docker.com/r/alexandreoda/owasp-zap)
+[![version](https://images.microbadger.com/badges/version/alexandreoda/owasp-zap.svg)](https://microbadger.com/images/alexandreoda/owasp-zap)
+[![size](https://images.microbadger.com/badges/image/alexandreoda/owasp-zap.svg)](https://microbadger.com/images/alexandreoda/owasp-zap")
+[![build](https://img.shields.io/docker/build/alexandreoda/owasp-zap.svg)](https://hub.docker.com/r/alexandreoda/owasp-zap)
+[![automated](https://img.shields.io/docker/automated/alexandreoda/owasp-zap.svg)](https://hub.docker.com/r/alexandreoda/owasp-zap)
 
 
 ## INTRODUCTION
 
-Ce repository contient le fichier Dockerfile de [owasp-zap](https://www.owasp.org/index.php/OWASP_HA_Vulnerability_Scanner_Project) pour [docker](https://www.docker.com), mis à jour automatiquement dans le [docker hub](https://hub.docker.com/r/alexandreoda/owasp-zap/) public.
+Ce repository contient le fichier Dockerfile de
+
+- [owasp-zap](https://www.owasp.org/index.php/OWASP_HA_Vulnerability_Scanner_Project)
+
+Mis à jour automatiquement dans le [docker hub public](https://hub.docker.com/r/alexandreoda/owasp-zap).
 
 
 ## PREREQUIS

@@ -1,8 +1,11 @@
 FROM debian:stretch-slim
 
-MAINTAINER https://oda-alexandre.github.io
+MAINTAINER https://oda-alexandre.com
 
-# VARIABLES D'ENVIRONNEMENT
+# VARIABLES
+ENV USER owaspzap
+ENV LANG fr_FR.UTF-8
+ENV OPENJDK openjdk-11-jre
 ENV DEBIAN_FRONTEND noninteractive
 
 # INSTALLATION DES PREREQUIS
@@ -19,29 +22,27 @@ pgpgpg \
 dirmngr \
 apt-utils \
 xz-utils \
-wget
+wget && \
 
-# SELECTION LANGUE FRANCAISE
-ENV LANG fr_FR.UTF-8
-RUN echo fr_FR.UTF-8 UTF-8 > /etc/locale.gen && locale-gen
+# SELECTION DE LA LANGUE FRANCAISE
+echo ${LANG} > /etc/locale.gen && locale-gen && \
 
 # MODIFICATION DU FICHIER /etc/apt/sources.list AVEC LES REPOS kali-rolling contrib non-free
-RUN echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
+echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
 echo 'deb-src https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
-wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add
+wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add && \
 
 # INSTALLATION DE L'APPLICATION
-RUN mkdir -p /usr/share/man/man1
-
-RUN apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
-openjdk-11-jre \
-openjdk-11-jre-headless \
+mkdir -p /usr/share/man/man1 && \
+apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
+${OPENJDK} \
+${OPENJDK}-headless \
 default-jre \
 ca-certificates-java \
-zaproxy
+zaproxy && \
 
 # NETTOYAGE
-RUN apt-get --purge autoremove -y \
+apt-get --purge autoremove -y \
 wget && \
 apt-get autoclean -y && \
 rm /etc/apt/sources.list && \
@@ -49,15 +50,15 @@ rm -rf /var/cache/apt/archives/* && \
 rm -rf /var/lib/apt/lists/*
 
 # AJOUT UTILISATEUR
-RUN useradd -d /home/owaspzap -m owaspzap && \
-passwd -d owaspzap && \
-adduser owaspzap sudo
+useradd -d /home/${USER} -m ${USER} && \
+passwd -d ${USER} && \
+adduser ${USER} sudo
 
 # SELECTION UTILISATEUR
-USER owaspzap
+USER ${USER}
 
 # SELECTION ESPACE DE TRAVAIL
-WORKDIR /home/owaspzap
+WORKDIR /home/${USER}
 
 # COMMANDE AU DEMARRAGE DU CONTENEUR
 CMD zaproxy -f
