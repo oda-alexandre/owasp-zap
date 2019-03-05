@@ -3,10 +3,10 @@ FROM debian:stretch-slim
 MAINTAINER https://oda-alexandre.com
 
 # VARIABLES
-ENV USER owaspzap \
-LANG fr_FR.UTF-8 \
-OPENJDK openjdk-11-jre \
-DEBIAN_FRONTEND noninteractive
+ENV USER owaspzap
+ENV LANG fr_FR.UTF-8
+ENV OPENJDK openjdk-11-jre
+ENV DEBIAN_FRONTEND noninteractive
 
 # INSTALLATION DES PREREQUIS
 RUN apt-get update && apt-get install --no-install-recommends -y \
