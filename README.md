@@ -1,6 +1,6 @@
 # OWASP-ZAP
 
-[![dockeri.co](https://dockeri.co/image/alexandreoda/owasp-zap)](https://hub.docker.com/r/alexandreoda/owasp-zap)
+<img src="http://4.bp.blogspot.com/-QnYf9hlKYuU/U4h991LRk4I/AAAAAAAALac/FbPo0Ji_v8Y/s1600/owasp_zap.png" />
 
 
 ## INDEX
@@ -14,10 +14,7 @@
 
 ## BADGES
 
-[![version](https://images.microbadger.com/badges/version/alexandreoda/owasp-zap.svg)](https://microbadger.com/images/alexandreoda/owasp-zap)
-[![size](https://images.microbadger.com/badges/image/alexandreoda/owasp-zap.svg)](https://microbadger.com/images/alexandreoda/owasp-zap")
-[![build](https://img.shields.io/docker/build/alexandreoda/owasp-zap.svg)](https://hub.docker.com/r/alexandreoda/owasp-zap)
-[![automated](https://img.shields.io/docker/automated/alexandreoda/owasp-zap.svg)](https://hub.docker.com/r/alexandreoda/owasp-zap)
+[![pipeline status](https://gitlab.com/oda-alexandre/owasp-zap/badges/master/pipeline.svg)](https://gitlab.com/oda-alexandre/owasp-zap/commits/master)
 
 
 ## INTRODUCTION
