@@ -1,5 +1,7 @@
+# IMAGE TO USE
 FROM debian:stretch-slim
 
+# MAINTAINER
 MAINTAINER https://www.oda-alexandre.com/
 
 # VARIABLES
@@ -8,7 +10,7 @@ ENV LANG fr_FR.UTF-8
 ENV OPENJDK openjdk-11-jre
 ENV DEBIAN_FRONTEND noninteractive
 
-# INSTALLATION DES PREREQUIS
+# INSTALL PACKAGES
 RUN apt-get update && apt-get install --no-install-recommends -y \
 ca-certificates \
 locales \
@@ -24,15 +26,15 @@ apt-utils \
 xz-utils \
 wget && \
 
-# SELECTION DE LA LANGUE FRANCAISE
+# CHANGE LOCALES
 echo ${LANG} > /etc/locale.gen && locale-gen && \
 
-# MODIFICATION DU FICHIER /etc/apt/sources.list AVEC LES REPOS kali-rolling contrib non-free
+# CHANGE OF FILE /etc/apt/sources.list WITH REPOS kali-rolling contrib non-free
 echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
 echo 'deb-src https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
 wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add && \
 
-# INSTALLATION DE L'APPLICATION
+# INSTALL APP
 mkdir -p /usr/share/man/man1 && \
 apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
 ${OPENJDK} \
@@ -41,7 +43,7 @@ default-jre \
 ca-certificates-java \
 zaproxy && \
 
-# NETTOYAGE
+# CLEANING
 apt-get --purge autoremove -y \
 wget && \
 apt-get autoclean -y && \
@@ -49,16 +51,16 @@ rm /etc/apt/sources.list && \
 rm -rf /var/cache/apt/archives/* && \
 rm -rf /var/lib/apt/lists/* && \
 
-# AJOUT UTILISATEUR
+# ADD USER
 useradd -d /home/${USER} -m ${USER} && \
 passwd -d ${USER} && \
 adduser ${USER} sudo
 
-# SELECTION UTILISATEUR
+# SELECT USER
 USER ${USER}
 
-# SELECTION ESPACE DE TRAVAIL
+# SELECT WORKING SPACE
 WORKDIR /home/${USER}
 
-# COMMANDE AU DEMARRAGE DU CONTENEUR
-CMD zaproxy -f
+# START THE CONTAINER
+CMD zaproxy -f \
