@@ -1,6 +1,6 @@
 # OWASP-ZAP
 
-<img src="http://4.bp.blogspot.com/-QnYf9hlKYuU/U4h991LRk4I/AAAAAAAALac/FbPo0Ji_v8Y/s1600/owasp_zap.png" />
+<img src="http://4.bp.blogspot.com/-QnYf9hlKYuU/U4h991LRk4I/AAAAAAAALac/FbPo0Ji_v8Y/s1600/owasp_zap.png" width="200" height="200"/>
 
 
 ## INDEX
