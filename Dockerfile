@@ -1,17 +1,14 @@
-# IMAGE TO USE
 FROM debian:stretch-slim
 
-# MAINTAINER
 MAINTAINER https://www.oda-alexandre.com/
 
-# VARIABLES
 ENV USER owaspzap
 ENV LANG fr_FR.UTF-8
 ENV OPENJDK openjdk-11-jre
 ENV DEBIAN_FRONTEND noninteractive
 
-# INSTALL PACKAGES
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
+apt-get update && apt-get install --no-install-recommends -y \
 ca-certificates \
 locales \
 apt-transport-https \
@@ -24,43 +21,43 @@ pgpgpg \
 dirmngr \
 apt-utils \
 xz-utils \
-wget && \
+wget
 
-# CHANGE LOCALES
-echo ${LANG} > /etc/locale.gen && locale-gen && \
+RUN echo -e '\033[36;1m ******* CHANGE LOCALES ******** \033[0m' && \
+echo ${LANG} > /etc/locale.gen && locale-gen
 
-# CHANGE OF FILE /etc/apt/sources.list WITH REPOS kali-rolling contrib non-free
+RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
 echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
 echo 'deb-src https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
-wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add && \
+wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add
 
-# INSTALL APP
+RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
 mkdir -p /usr/share/man/man1 && \
 apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
 ${OPENJDK} \
 ${OPENJDK}-headless \
 default-jre \
 ca-certificates-java \
-zaproxy && \
+zaproxy
 
-# CLEANING
+RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
 apt-get --purge autoremove -y \
 wget && \
 apt-get autoclean -y && \
 rm /etc/apt/sources.list && \
 rm -rf /var/cache/apt/archives/* && \
-rm -rf /var/lib/apt/lists/* && \
+rm -rf /var/lib/apt/lists/*
 
-# ADD USER
+RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m' && \
 useradd -d /home/${USER} -m ${USER} && \
 passwd -d ${USER} && \
 adduser ${USER} sudo
 
-# SELECT USER
+RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
 
-# SELECT WORKING SPACE
+RUN echo -e '\033[36;1m ******* SELECT WORKING SPACE ******** \033[0m'
 WORKDIR /home/${USER}
 
-# START THE CONTAINER
+RUN echo -e '\033[36;1m ******* CONTAINER START COMMAND ******** \033[0m'
 CMD zaproxy -f \
