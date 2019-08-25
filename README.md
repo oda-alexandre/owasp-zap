@@ -2,7 +2,6 @@
 
 <img src="http://4.bp.blogspot.com/-QnYf9hlKYuU/U4h991LRk4I/AAAAAAAALac/FbPo0Ji_v8Y/s1600/owasp_zap.png" width="200" height="200"/>
 
-
 ## INDEX
 
 - [Badges](#BADGES)
@@ -11,11 +10,9 @@
 - [Install](#INSTALL)
 - [License](#LICENSE)
 
-
 ## BADGES
 
 [![pipeline status](https://gitlab.com/oda-alexandre/owasp-zap/badges/master/pipeline.svg)](https://gitlab.com/oda-alexandre/owasp-zap/commits/master)
-
 
 ## INTRODUCTION
 
@@ -29,18 +26,13 @@ Continuous integration on :
 
 Automatically updated on : [docker hub public](https://hub.docker.com/r/alexandreoda/owasp-zap)
 
-
 ## PREREQUISITES
 
 Use [docker](https://www.docker.com)
 
-
 ## INSTALL
 
-```
-docker run -d --name owasp-zap -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/owaspzap -e DISPLAY alexandreoda/owasp-zap
-```
-
+```docker run -d --name owasp-zap -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/owaspzap -e DISPLAY alexandreoda/owasp-zap```
 
 ## LICENSE
 
