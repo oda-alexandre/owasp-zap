@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-MAINTAINER https://www.oda-alexandre.com/
+LABEL authors https://www.oda-alexandre.com/
 
 ENV USER owaspzap
 ENV LANG fr_FR.UTF-8
@@ -8,7 +8,7 @@ ENV OPENJDK openjdk-11-jre
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
-apt-get update && apt-get install --no-install-recommends -y \
+apt update && apt install --no-install-recommends -y \
 ca-certificates \
 locales \
 apt-transport-https \
@@ -33,7 +33,7 @@ wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add
 
 RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
 mkdir -p /usr/share/man/man1 && \
-apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
+apt update && apt install --no-install-recommends -y --allow-unauthenticated \
 ${OPENJDK} \
 ${OPENJDK}-headless \
 default-jre \
