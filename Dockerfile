@@ -4,14 +4,12 @@ LABEL authors https://www.oda-alexandre.com
 
 ENV USER owaspzap
 ENV HOME /home/${USER}
-ENV LOCALES fr_FR.UTF-8
 ENV OPENJDK openjdk-11-jre
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
   apt-get update && apt-get install --no-install-recommends -y \
   ca-certificates \
-  locales \
   apt-transport-https \
   sudo \
   tor \
@@ -23,9 +21,6 @@ RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
   apt-utils \
   xz-utils \
   wget
-
-RUN echo -e '\033[36;1m ******* CHANGE LOCALES ******** \033[0m' && \
-  locale-gen ${LOCALES}
 
 RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
   echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
