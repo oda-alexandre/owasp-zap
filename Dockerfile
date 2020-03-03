@@ -20,28 +20,23 @@ RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
   dirmngr \
   apt-utils \
   xz-utils \
-  wget \
-  && \
-  echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
+  wget && \
+  rm -rf /var/lib/apt/lists/*
+
+RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
   echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
   echo 'deb-src https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
   wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add && \
-  apt-get --purge autoremove -y wget \
-  && \
-  echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
+  apt-get --purge autoremove -y wget
+
+RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
   mkdir -p /usr/share/man/man1 && \
   apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
   ${OPENJDK} \
   ${OPENJDK}-headless \
   default-jre \
   ca-certificates-java \
-  zaproxy \
-  && \
-  echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
-  apt-get --purge autoremove -y && \
-  apt-get autoclean -y && \
-  rm /etc/apt/sources.list && \
-  rm -rf /var/cache/apt/archives/* && \
+  zaproxy && \
   rm -rf /var/lib/apt/lists/*
 
 RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m' && \
