@@ -10,6 +10,8 @@
   - [INTRODUCTION](#introduction)
   - [PREREQUISITES](#prerequisites)
   - [INSTALL](#install)
+    - [DOCKER RUN](#docker-run)
+    - [DOCKER COMPOSE](#docker-compose)
   - [LICENSE](#license)
 
 ## BADGES
@@ -24,7 +26,7 @@ Docker image of :
 
 Continuous integration on :
 
-- [gitlab](https://gitlab.com/oda-alexandre/owasp_zap/pipelines)
+- [gitlab pipelines](https://gitlab.com/oda-alexandre/owasp_zap/pipelines)
 
 Automatically updated on : [docker hub public](https://hub.docker.com/r/alexandreoda/owasp-zap)
 
@@ -34,7 +36,28 @@ Use [docker](https://www.docker.com)
 
 ## INSTALL
 
-```docker run -d --name owasp-zap -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/owaspzap -e DISPLAY alexandreoda/owasp-zap```
+### DOCKER RUN
+
+```docker run -d --name owasp-zap -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/owaspzap -e DISPLAY alexandreoda/owasp-zap
+```
+
+### DOCKER COMPOSE
+
+```yml
+version: "3.7"
+
+services:
+  owasp-zap:
+    container_name: owasp-zap
+    image: alexandreoda/owasp-zap
+    restart: "no"
+    privileged: false
+    environment:
+      - DISPLAY
+    volumes:
+      - "${HOME}:/home/owasp-zap"
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/"
+```
 
 ## LICENSE
 
