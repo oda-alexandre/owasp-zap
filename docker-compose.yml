@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  owasp-zap:
+    container_name: owasp-zap
+    image: alexandreoda/owasp-zap
+    restart: "no"
+    privileged: false
+    environment:
+      - DISPLAY
+    volumes:
+      - "${HOME}:/home/owasp-zap"
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/"
