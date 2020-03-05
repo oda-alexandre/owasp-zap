@@ -38,7 +38,8 @@ Use [docker](https://www.docker.com)
 
 ### DOCKER RUN
 
-```docker run -d --name owasp-zap -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/owaspzap -e DISPLAY alexandreoda/owasp-zap
+```\
+docker  run -d --name owasp-zap -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/owaspzap -e DISPLAY alexandreoda/owasp-zap
 ```
 
 ### DOCKER COMPOSE
