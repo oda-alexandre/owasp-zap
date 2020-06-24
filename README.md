@@ -2,8 +2,6 @@
 
 ![logo](https://assets.gitlab-static.net/uploads/-/system/project/avatar/12904466/051e0245d787d1f71246d515e88a8564_zap256x256-oversize.png)
 
-## INDEX
-
 - [OWASP-ZAP](#owasp-zap)
   - [INDEX](#index)
   - [BADGES](#badges)
@@ -34,7 +32,7 @@ Automatically updated on : [docker hub public](https://hub.docker.com/r/alexandr
 
 Use [docker](https://www.docker.com)
 
-## INSTALL
+## BUILD
 
 ### DOCKER RUN
 
